@@ -3,6 +3,7 @@ import {Outline} from "./components/Outline.tsx";
 import {Content} from "./components/Content.tsx";
 import {About} from "./components/About.tsx";
 import {Eduction} from "./components/Eduction.tsx";
+import {Experience} from "./components/Experience.tsx";
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
           }}
       >
           <Outline/>
-          <Content contentSections={[<About/>, <Eduction/>]} />
+          <Content contentSections={[<About/>, <Eduction/>, <Experience/>]} />
       </Box>
     </>
   )
