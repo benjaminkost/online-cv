@@ -4,6 +4,7 @@ import {Content} from "./components/Content.tsx";
 import {About} from "./components/About.tsx";
 import {Eduction} from "./components/Eduction.tsx";
 import {Experience} from "./components/Experience.tsx";
+import {Projects} from "./components/Projects.tsx";
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
           }}
       >
           <Outline/>
-          <Content contentSections={[<About/>, <Eduction/>, <Experience/>]} />
+          <Content contentSections={[<About/>, <Eduction/>, <Experience/>, <Projects/>]} />
       </Box>
     </>
   )

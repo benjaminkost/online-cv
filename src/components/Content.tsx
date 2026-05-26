@@ -9,7 +9,8 @@ export function Content({contentSections}: ContentProps) {
     return (
         <Box sx={{
                 display: "flex",
-                flexDirection: "column"
+                flexDirection: "column",
+                gap: 8
             }}
         >
             {contentSections.map((item) =>
