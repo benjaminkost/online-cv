@@ -1,4 +1,5 @@
 import {Box, Chip, Typography} from "@mui/material";
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 interface ProjectsProps {
     projects?: SingleProjectProps[]
@@ -47,11 +48,13 @@ function SingleProject({name, description, link, skills}: SingleProjectProps) {
         >
                 <Box sx={{
                     display: "flex",
-                    flexDirection: "row"
+                    flexDirection: "row",
+                    gap: 1
                 }}>
+                    <OpenInNewIcon/>
                     <Typography variant={"h5"}>{name}</Typography>
                 </Box>
-                <Typography>{description}</Typography>
+                    <Typography>{description}</Typography>
                 <Box sx={{
                     display: "flex",
                     flexDirection: "row"
