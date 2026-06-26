@@ -97,7 +97,7 @@ const cardListSx = {
 }
 
 export function Eduction({ degrees = defaultDegreeList }: EductionProps) {
-  const { slate, teal } = colors
+  const { slate } = colors
 
   return (
     <Box sx={cardListSx}>
