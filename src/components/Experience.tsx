@@ -41,8 +41,8 @@ const defaultPositions: Position[] = [
     company: 'Mercedes-Benz AG',
     companyUrl: 'https://www.mercedes-benz.com',
     description:
-      'Unterstützung in den Bereichen Verhandlung mit Kunden, Auslieferung von Autos, Wartung und Reparatur der Autos.',
-    skills: ['Verkauf', 'Autowartung'],
+      'Support in the areas of customer negotiations, vehicle delivery, and vehicle maintenance and repair.',
+    skills: ['Sales', 'Car Maintance'],
   },
 ]
 
