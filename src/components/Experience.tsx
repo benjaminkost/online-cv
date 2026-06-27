@@ -46,7 +46,7 @@ const defaultPositions: Position[] = [
   },
 ]
 
-function ArrowIcon() {
+export function ArrowIcon() {
   return (
     <Box
       component="svg"

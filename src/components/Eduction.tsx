@@ -1,5 +1,6 @@
-import { Box, Typography, Chip } from '@mui/material'
+import {Box, Typography, Chip, Link as MuiLink} from '@mui/material'
 import { colors } from '../theme.ts'
+import {ArrowIcon} from "./Experience.tsx";
 
 interface Degree {
   school: string
@@ -9,6 +10,7 @@ interface Degree {
   endLabel: string
   degree?: string
   finalGrade?: number
+  website?: string
 }
 
 const defaultDegreeList: Degree[] = [
@@ -19,6 +21,7 @@ const defaultDegreeList: Degree[] = [
     startLabel: 'Oct 2025',
     endLabel: 'Present',
     degree: 'B.Sc. Elektrotechnik und Informationstechnologie',
+    website: 'https://www.tum.de/'
   },
   {
     school: 'Technische Universität Berlin',
@@ -28,6 +31,7 @@ const defaultDegreeList: Degree[] = [
     endLabel: 'Sep 2025',
     degree:
       'Courses: Analysis I & Lineare Algebra für Ingenieure (WiSe), Analysis II für Ingenieurwissenschaften (SoSe)',
+    website: 'https://www.tu.berlin/'
   },
   {
     school: 'Hochschule für Wirtschaft und Recht',
@@ -37,6 +41,7 @@ const defaultDegreeList: Degree[] = [
     endLabel: 'Sep 2024',
     degree: 'B.Sc. Wirtschaftsinformatik',
     finalGrade: 1.5,
+    website: 'https://www.hwr-berlin.de/hwr-berlin/fachbereiche-und-bps/fb-2-duales-studium\n'
   },
   {
     school: 'John-Lennon-Gymnasium',
@@ -46,6 +51,7 @@ const defaultDegreeList: Degree[] = [
     endLabel: 'Jul 2021',
     degree: 'Abitur',
     finalGrade: 1.7,
+    website: 'https://www.jlgym-berlin.de/jlg/\n'
   },
   {
     school: "St. Paul's School",
@@ -54,6 +60,7 @@ const defaultDegreeList: Degree[] = [
     startLabel: 'Aug 2018',
     endLabel: 'Dec 2018',
     degree: 'Semester abroad',
+    website: 'https://www.stpaulsmd.org/\n'
   },
   {
     school: 'Bertha-von-Suttner',
@@ -62,6 +69,7 @@ const defaultDegreeList: Degree[] = [
     startLabel: 'Aug 2013',
     endLabel: 'Aug 2019',
     degree: 'School from 5th to 10th Grade',
+    website: 'https://www.bertha-von-suttner.de/\n'
   },
 ]
 
@@ -102,30 +110,57 @@ export function Eduction({ degrees = defaultDegreeList }: EductionProps) {
   return (
     <Box sx={cardListSx}>
       {degrees.map((deg, idx) => (
-        <Box className="card-item" sx={cardSx} key={idx}>
-          <Typography variant="caption" sx={{ mt: 0.5, whiteSpace: 'nowrap', minWidth: 120 }}>
-            {deg.startLabel} — {deg.endLabel}
-          </Typography>
-          <Box>
-            <Typography variant="h3" component="h3">
-              {deg.school}
-              {deg.city && (
-                <Typography
-                  component="span"
-                  sx={{ ml: 0.5, fontWeight: 400, fontSize: '0.85rem', color: slate[500] }}
-                >
-                  · {deg.city}, {deg.country}
-                </Typography>
-              )}
+        <Box
+            onClick={() => deg.website && window.open(deg.website, '_blank')}
+        >
+          <Box className="card-item" sx={cardSx} key={idx}>
+            <Typography variant="caption" sx={{ mt: 0.5, whiteSpace: 'nowrap', minWidth: 120 }}>
+              {deg.startLabel} — {deg.endLabel}
             </Typography>
-            {deg.degree && (
-              <Typography variant="body2" sx={{ mt: 0.5 }}>
-                {deg.degree}
+            <Box>
+              <Typography variant="h3" component="h3">
+                {deg.website ? (
+                    <MuiLink
+                        href={deg.website}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        onClick={(e: React.MouseEvent) => e.stopPropagation()}
+                        sx={{
+                          color: slate[200],
+                          '&:hover': { color: 'primary.main' },
+                          display: 'inline-flex',
+                          alignItems: 'baseline',
+                          fontWeight: 500,
+                        }}
+                    >
+                      {deg.school}
+                      <Box component="span" sx={{ display: 'inline-block' }}>
+                        <ArrowIcon />
+                      </Box>
+                    </MuiLink>
+                ) : (
+                    <>
+                      {deg.school}
+                    </>
+                )}
+                {deg.city && (
+                    <Typography
+                        component="span"
+                        sx={{ ml: 0.5, fontWeight: 400, fontSize: '0.85rem', color: slate[500] }}
+                    >
+                      · {deg.city}, {deg.country}
+                    </Typography>
+                )}
               </Typography>
-            )}
-            {deg.finalGrade && (
-              <Chip label={`Note: ${deg.finalGrade}`} size="small" sx={{ mt: 1 }} />
-            )}
+              {deg.degree && (
+                  <Typography variant="body2" sx={{ mt: 0.5 }}>
+                    {deg.degree}
+                  </Typography>
+              )}
+              {deg.finalGrade && (
+                  <Chip label={`Note: ${deg.finalGrade}`} size="small" sx={{ mt: 1 }} />
+              )}
+            </Box>
           </Box>
         </Box>
       ))}
